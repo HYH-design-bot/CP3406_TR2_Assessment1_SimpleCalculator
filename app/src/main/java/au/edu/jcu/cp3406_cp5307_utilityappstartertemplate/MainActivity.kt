@@ -147,13 +147,13 @@ fun SettingsScreen() {
 
 private fun getResult(expression: String): String {
 
-    //map for replacing expressions with operators
+    //replace expressions with operators
     val operators = expression
         .replace("×", "*")
         .replace("÷", "/")
         .replace("−", "-")
 
-    val result = "Result: $expression"
+    val result = "Result: $operators"
 
     return result
 }

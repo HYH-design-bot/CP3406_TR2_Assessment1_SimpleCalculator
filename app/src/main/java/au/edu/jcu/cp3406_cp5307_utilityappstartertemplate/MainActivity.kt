@@ -113,10 +113,10 @@ fun UtilityScreen() {
                         if (label == "C") {
                             //if Clear
                             displayText = "0"
-                        } else if (label == "=") {
+                        } else if (label == "=" && !displayText.contains("Result")){
                             //if equal
                             displayText = getResult(displayText)
-                        } else if (displayText == "0") {
+                        } else if (displayText == "0" || displayText.contains("Result")) {
                             //if first button text
                             displayText = label
                         } else {
@@ -146,5 +146,14 @@ fun SettingsScreen() {
 }
 
 private fun getResult(expression: String): String {
-    return "result"
+
+    //map for replacing expressions with operators
+    val operators = expression
+        .replace("×", "*")
+        .replace("÷", "/")
+        .replace("−", "-")
+
+    val result = "Result: $expression"
+
+    return result
 }

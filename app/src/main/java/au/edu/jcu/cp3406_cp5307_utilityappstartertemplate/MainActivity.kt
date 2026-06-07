@@ -97,6 +97,15 @@ fun UtilityScreen() {
         Button(onClick = { displayText }) {
             Text("Increment")
         }
+
+        // Buttons
+        val buttons = listOf(
+            listOf("C", "()", "%", "÷"),
+            listOf("7", "8", "9", "×"),
+            listOf("4", "5", "6", "−"),
+            listOf("1", "2", "3", "+"),
+            listOf("+/-", "0", ".", "=")
+        )
     }
 }
 

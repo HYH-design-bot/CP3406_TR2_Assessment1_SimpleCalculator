@@ -108,8 +108,10 @@ fun UtilityScreen() {
                 modifier = Modifier,
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                Button(onClick = { displayText }) {
-                    Text("Increment")
+                row.forEach{ label ->
+                    Button(onClick = { displayText }) {
+                        Text(label)
+                    }
                 }
             }
         }

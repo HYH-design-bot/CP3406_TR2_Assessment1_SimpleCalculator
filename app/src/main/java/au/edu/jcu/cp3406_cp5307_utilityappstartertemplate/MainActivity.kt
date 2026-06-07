@@ -84,6 +84,7 @@ fun UtilityApp() {
 @Composable
 fun UtilityScreen() {
     var displayText by remember { mutableStateOf("0") }
+    var loggedText by remember { mutableStateOf("0") }
 
     Column(
         modifier = Modifier
@@ -93,6 +94,9 @@ fun UtilityScreen() {
     ) {
         //Display Box
         Text(displayText, style = MaterialTheme.typography.displayLarge)
+
+        //for logging
+        Text(loggedText, style = MaterialTheme.typography.displaySmall)
 
         // Buttons
         val buttons = listOf(
@@ -115,6 +119,7 @@ fun UtilityScreen() {
                             displayText = "0"
                         } else if (label == "=" && !displayText.contains("Result")){
                             //if equal
+                            loggedText = displayText
                             displayText = getResult(displayText)
                         } else if (displayText == "0" || displayText.contains("Result")) {
                             //if first button text
@@ -153,7 +158,7 @@ private fun getResult(expression: String): String {
         .replace("÷", "/")
         .replace("−", "-")
 
-    val result = "Result: $operators"
+    val result = operators
 
     return result
 }

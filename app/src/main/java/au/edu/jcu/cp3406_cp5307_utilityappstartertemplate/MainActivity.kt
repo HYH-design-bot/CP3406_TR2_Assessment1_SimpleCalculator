@@ -94,10 +94,6 @@ fun UtilityScreen() {
         //Display Box
         Text(displayText, style = MaterialTheme.typography.displayLarge)
 
-        Button(onClick = { displayText }) {
-            Text("Increment")
-        }
-
         // Buttons
         val buttons = listOf(
             listOf("C", "()", "%", "÷"),
@@ -106,6 +102,17 @@ fun UtilityScreen() {
             listOf("1", "2", "3", "+"),
             listOf("+/-", "0", ".", "=")
         )
+
+        buttons.forEach { row ->
+            androidx.compose.foundation.layout.Row(
+                modifier = Modifier,
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                Button(onClick = { displayText }) {
+                    Text("Increment")
+                }
+            }
+        }
     }
 }
 

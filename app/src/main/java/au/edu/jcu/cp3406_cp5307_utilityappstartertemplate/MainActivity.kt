@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.theme.CP3406_CP5603UtilityAppStarterTemplateTheme
+import com.notkamui.keval.keval
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,6 +118,11 @@ fun UtilityScreen() {
                         if (label == "C") {
                             //if Clear
                             displayText = "0"
+                        } else if (label == "+/-" || label == "()"){
+                            if (label == "+/-"){
+                                displayText = "-$displayText"
+                            }
+                            displayText = "($displayText)"
                         } else if (label == "=" && !displayText.contains("Result")){
                             //if equal
                             loggedText = displayText
@@ -158,7 +164,7 @@ private fun getResult(expression: String): String {
         .replace("÷", "/")
         .replace("−", "-")
 
-    val result = operators
+    val result = operators.keval()
 
-    return result
+    return result.toString()
 }

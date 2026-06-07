@@ -109,7 +109,18 @@ fun UtilityScreen() {
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 row.forEach{ label ->
-                    Button(onClick = { displayText }) {
+                    Button(onClick = {
+                        if (label == "C") {
+                            //if Clear
+                            displayText = "0"
+                        } else if (displayText == "0") {
+                            displayText = label
+                        } else {
+                            //if any normal button
+                            displayText += label
+                        }
+                    })
+                    {
                         Text(label)
                     }
                 }

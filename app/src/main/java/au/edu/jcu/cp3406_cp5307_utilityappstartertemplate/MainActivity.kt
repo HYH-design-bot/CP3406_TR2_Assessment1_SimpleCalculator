@@ -113,7 +113,11 @@ fun UtilityScreen() {
                         if (label == "C") {
                             //if Clear
                             displayText = "0"
+                        } else if (label == "=") {
+                            //if equal
+                            displayText = getResult(displayText)
                         } else if (displayText == "0") {
+                            //if first button text
                             displayText = label
                         } else {
                             //if any normal button
@@ -139,4 +143,8 @@ fun SettingsScreen() {
         Text("Settings Screen", style = MaterialTheme.typography.headlineMedium)
         Text("This is where you can add toggles or preferences.")
     }
+}
+
+private fun getResult(expression: String): String {
+    return "result"
 }

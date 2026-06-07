@@ -158,13 +158,24 @@ fun SettingsScreen() {
 
 private fun getResult(expression: String): String {
 
-    //replace expressions with operators
-    val operators = expression
-        .replace("×", "*")
-        .replace("÷", "/")
-        .replace("−", "-")
+    return try {
+        //replace expressions with operators
+        val operators = expression
+            .replace("×", "*")
+            .replace("÷", "/")
+            .replace("−", "-")
 
-    val result = operators.keval()
+        // calculate result
+        val result = operators.keval()
 
-    return result.toString()
+        // convert to string
+        if (result % 1 == 0.0) {
+            //clear decimals
+            result.toLong().toString()
+        } else {
+            result.toString()
+        }
+    } catch (e: Exception) {
+        "Error" // for catching errors like division by zero and unclosed brackets
+    }
 }

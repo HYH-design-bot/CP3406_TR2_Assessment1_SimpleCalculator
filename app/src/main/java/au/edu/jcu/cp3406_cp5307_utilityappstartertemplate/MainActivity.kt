@@ -83,7 +83,7 @@ fun UtilityApp() {
 
 @Composable
 fun UtilityScreen() {
-    var counter by remember { mutableIntStateOf(0) }
+    var displayText by remember { mutableStateOf("0") }
 
     Column(
         modifier = Modifier
@@ -91,10 +91,10 @@ fun UtilityScreen() {
             .padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        Text("Utility Screen", style = MaterialTheme.typography.headlineMedium)
-        Text("Counter: $counter", style = MaterialTheme.typography.bodyLarge)
+        //Display Box
+        Text(displayText, style = MaterialTheme.typography.displayLarge)
 
-        Button(onClick = { counter++ }) {
+        Button(onClick = { displayText }) {
             Text("Increment")
         }
     }

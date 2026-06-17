@@ -163,7 +163,7 @@ private fun getResult(expression: String): String {
         val operators = expression
             .replace("×", "*")
             .replace("÷", "/")
-            .replace("−", "-")
+            .replace("%", "/100")
 
         // calculate result
         val result = operators.keval()
@@ -176,6 +176,6 @@ private fun getResult(expression: String): String {
             result.toString()
         }
     } catch (e: Exception) {
-        "Error" // for catching errors like division by zero and unclosed brackets
+        "Error: $e" // for catching errors like division by zero and unclosed brackets
     }
 }

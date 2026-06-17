@@ -30,6 +30,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import au.edu.jcu.cp3406_cp5307_utilityappstartertemplate.ui.theme.CP3406_CP5603UtilityAppStarterTemplateTheme
 import com.notkamui.keval.keval
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,9 +53,15 @@ fun UtilityAppPreview() {
     }
 }
 
+class CalculatorViewModel : ViewModel() {
+    var selectedTab by mutableStateOf("Utility")
+    var displayText by mutableStateOf("0")
+    var loggedText by mutableStateOf("0")
+}
+
 @Composable
 fun UtilityApp() {
-    var selectedTab by remember { mutableStateOf("Utility") }
+    val myViewModel: CalculatorViewModel = viewModel()
 
     Scaffold(
         bottomBar = {
@@ -61,21 +69,21 @@ fun UtilityApp() {
                 NavigationBarItem(
                     icon = { Icon(Icons.Default.Home, contentDescription = "Utility") },
                     label = { Text("Utility") },
-                    selected = selectedTab == "Utility",
-                    onClick = { selectedTab = "Utility" }
+                    selected = myViewModel.selectedTab == "Utility",
+                    onClick = { myViewModel.selectedTab = "Utility" }
                 )
                 NavigationBarItem(
                     icon = { Icon(Icons.Default.Settings, contentDescription = "Settings") },
                     label = { Text("Settings") },
-                    selected = selectedTab == "Settings",
-                    onClick = { selectedTab = "Settings" }
+                    selected = myViewModel.selectedTab == "Settings",
+                    onClick = { myViewModel.selectedTab = "Settings" }
                 )
             }
         }
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {
-            when (selectedTab) {
-                "Utility" -> UtilityScreen()
+            when (myViewModel.selectedTab) {
+                "Utility" -> UtilityScreen(myViewModel)
                 "Settings" -> SettingsScreen()
             }
         }
@@ -83,9 +91,9 @@ fun UtilityApp() {
 }
 
 @Composable
-fun UtilityScreen() {
-    var displayText by remember { mutableStateOf("0") }
-    var loggedText by remember { mutableStateOf("0") }
+fun UtilityScreen(viewModel: CalculatorViewModel) {
+    var displayText by viewModel::displayText
+    var loggedText by viewModel::loggedText
 
     Column(
         modifier = Modifier

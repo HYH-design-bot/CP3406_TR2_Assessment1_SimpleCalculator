@@ -59,4 +59,5 @@ dependencies {
 
     //Added dependency
     implementation(libs.com.keval)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 }

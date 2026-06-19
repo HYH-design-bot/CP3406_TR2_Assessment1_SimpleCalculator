@@ -32,13 +32,13 @@ It provides the structure for a simple tabular UI using **Jetpack Compose** and 
 
 ## Key Concepts Covered
 
-| Week | Concept                        | Used In                          |
-|------|--------------------------------|----------------------------------|
-| 1    | Kotlin + Android Studio         | MainActivity.kt |
-| 2    | Jetpack Compose Layouts         | UtilityApp(), UtilityScreen(), SettingsScreen()   |
-| 3    | Material Design 3               | CP3406_CP5603UtilityAppStarterTemplateTheme, MaterialTheme.typography |
-| 4    | ViewModel | Not included in starter          |
-| 5    | Retrofit  | Not included in starter          |
+| Week | Concept                        | Used In                                                                |
+|------|--------------------------------|------------------------------------------------------------------------|
+| 1    | Kotlin + Android Studio         | MainActivity.kt                                                        |
+| 2    | Jetpack Compose Layouts         | UtilityApp(), UtilityScreen(), SettingsScreen()                        |
+| 3    | Material Design 3               | CP3406_CP5603UtilityAppStarterTemplateTheme, MaterialTheme.typography  |
+| 4    | ViewModel | class CalculatorViewModel : ViewModel(), UtilityApp(), UtilityScreen() |
+| 5    | Retrofit  | Not included in starter (Not needed for simple calculator)             |
 
 ---
 
